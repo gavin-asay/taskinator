@@ -15,12 +15,18 @@ var taskFormHandler = function(event) {
 
     formEl.reset();
 
+    var isEdit = formEl.hasAttribute("data-task-id");
+    if (isEdit) {
+        var taskId = formEl.getAttribute("data-task-id");
+        completeEditTask(taskNameInput, taskTypeInput, taskId);
+    } else {
     var taskDataObj = {
         name: taskNameInput,
         type: taskTypeInput
     }
     createTaskEl(taskDataObj);
   }
+}
 
   var createTaskEl = function(taskDataObj) {
     var listItemEl = document.createElement("li");
@@ -108,6 +114,10 @@ var editTask = function(taskId) {
     document.querySelector("select[name='task-type']").value = taskType;
     document.querySelector("#save-task").textContent = "Save Task";
     formEl.setAttribute("data-task-id", taskId);
+}
+
+var completeEditTask = function(taskName, taskType, taskId) {
+    console.log(taskName, taskType, taskId);
 }
 
 formEl.addEventListener("submit", taskFormHandler);
