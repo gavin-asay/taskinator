@@ -47,7 +47,7 @@ var taskFormHandler = function(event) {
 
     var taskActionsEl = createTaskActions(taskIdCounter);
     listItemEl.appendChild(taskActionsEl);
-    debugger;
+    
     if (taskDataObj.status === "to do" || !taskDataObj.status) {
         listItemEl.querySelector("select").selectedIndex = 0;
         tasksToDoEl.appendChild(listItemEl);
